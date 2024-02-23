@@ -57,9 +57,8 @@ repositories {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.pdftron:pdftron:8.1.2"
     implementation "com.pdftron:tools:8.1.2"
     implementation "com.pdftron:collab:8.1.2"
-
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
