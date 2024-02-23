@@ -6,7 +6,9 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.1'
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+        classpath 'com.google.gms:google-services:4.3.15'
     }
 }
 
@@ -23,14 +25,15 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
+        ext.kotlin_version = '1.6.0'
         vectorDrawables.useSupportLibrary = true
     }
     compileOptions {
@@ -54,9 +57,9 @@ repositories {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
+    implementation "com.pdftron:pdftron:8.1.2"
+    implementation "com.pdftron:tools:8.1.2"
+    implementation "com.pdftron:collab:8.1.2"
 
-    implementation "com.pdftron:pdftron:7.1.2"
-    implementation "com.pdftron:tools:7.1.2"
-    implementation "com.pdftron:collab:7.1.2"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

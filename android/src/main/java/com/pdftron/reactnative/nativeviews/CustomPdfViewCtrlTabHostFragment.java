@@ -194,7 +194,7 @@ public class CustomPdfViewCtrlTabHostFragment extends PdfViewCtrlTabHostFragment
                     this.mBookmarksDialog.setBookmarksDialogListener(this);
                     this.mBookmarksDialog.setBookmarksTabsListener(this);
                     ((CustomBookmarkDialogFragment) this.mBookmarksDialog).setThumbnailClickListener(this);
-                    this.mBookmarksDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.AppTheme);
+                    this.mBookmarksDialog.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.CustomAppTheme);
                     FragmentManager fragmentManager = this.getFragmentManager();
 
                     // Show fullscreen dialog
@@ -249,54 +249,54 @@ public class CustomPdfViewCtrlTabHostFragment extends PdfViewCtrlTabHostFragment
         return this;
     }
 
-    @Override
-    protected void onViewModeOptionSelected() {
-        PdfViewCtrlTabFragment currentFragment = this.getCurrentPdfViewCtrlFragment();
-        if (currentFragment != null) {
-            currentFragment.updateCurrentPageInfo();
-            PDFViewCtrl.PagePresentationMode currentViewMode = PDFViewCtrl.PagePresentationMode.SINGLE_CONT;
-            PDFViewCtrl pdfViewCtrl = currentFragment.getPDFViewCtrl();
-            if (pdfViewCtrl != null) {
-                currentViewMode = pdfViewCtrl.getPagePresentationMode();
-            }
-
-            if (currentViewMode == PDFViewCtrl.PagePresentationMode.SINGLE_VERT) {
-                currentViewMode = PDFViewCtrl.PagePresentationMode.SINGLE_CONT;
-            } else if (currentViewMode == PDFViewCtrl.PagePresentationMode.FACING_VERT) {
-                currentViewMode = PDFViewCtrl.PagePresentationMode.FACING_CONT;
-            } else if (currentViewMode == PDFViewCtrl.PagePresentationMode.FACING_COVER_VERT) {
-                currentViewMode = PDFViewCtrl.PagePresentationMode.FACING_COVER_CONT;
-            }
-
-            boolean isRtlMode = currentFragment.isRtlMode();
-            boolean isReflowMode = currentFragment.isReflowMode();
-            int reflowTextSize = currentFragment.getReflowTextSize();
-            ArrayList<Integer> hiddenViewModeItems = new ArrayList();
-            if (this.mViewerConfig != null && !this.mViewerConfig.isShowCropOption()) {
-                hiddenViewModeItems.add(ViewModePickerDialogFragment.ViewModePickerItems.ITEM_ID_USERCROP.getValue());
-            }
-
-            if (this.mViewerConfig != null && this.mViewerConfig.getHideViewModeIds() != null) {
-                int[] var8 = this.mViewerConfig.getHideViewModeIds();
-                int var9 = var8.length;
-
-                for (int var10 = 0; var10 < var9; ++var10) {
-                    int item = var8[var10];
-                    hiddenViewModeItems.add(item);
-                }
-            }
-
-            CustomViewModePickerDialogFragment dialog = CustomViewModePickerDialogFragment.newInstance(currentViewMode, isRtlMode, isReflowMode, reflowTextSize, hiddenViewModeItems);
-            dialog.setViewModePickerDialogFragmentListener(this);
-            dialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
-            FragmentManager fragmentManager = this.getFragmentManager();
-            if (fragmentManager != null) {
-                dialog.show(fragmentManager, "view_mode_picker");
-            }
-
-            this.stopHideToolbarsTimer();
-        }
-    }
+//    @Override
+//    protected void onViewModeOptionSelected() {
+//        PdfViewCtrlTabFragment currentFragment = this.getCurrentPdfViewCtrlFragment();
+//        if (currentFragment != null) {
+//            currentFragment.updateCurrentPageInfo();
+//            PDFViewCtrl.PagePresentationMode currentViewMode = PDFViewCtrl.PagePresentationMode.SINGLE_CONT;
+//            PDFViewCtrl pdfViewCtrl = currentFragment.getPDFViewCtrl();
+//            if (pdfViewCtrl != null) {
+//                currentViewMode = pdfViewCtrl.getPagePresentationMode();
+//            }
+//
+//            if (currentViewMode == PDFViewCtrl.PagePresentationMode.SINGLE_VERT) {
+//                currentViewMode = PDFViewCtrl.PagePresentationMode.SINGLE_CONT;
+//            } else if (currentViewMode == PDFViewCtrl.PagePresentationMode.FACING_VERT) {
+//                currentViewMode = PDFViewCtrl.PagePresentationMode.FACING_CONT;
+//            } else if (currentViewMode == PDFViewCtrl.PagePresentationMode.FACING_COVER_VERT) {
+//                currentViewMode = PDFViewCtrl.PagePresentationMode.FACING_COVER_CONT;
+//            }
+//
+//            boolean isRtlMode = currentFragment.isRtlMode();
+//            boolean isReflowMode = currentFragment.isReflowMode();
+//            int reflowTextSize = currentFragment.getReflowTextSize();
+//            ArrayList<Integer> hiddenViewModeItems = new ArrayList();
+//            if (this.mViewerConfig != null && !this.mViewerConfig.isShowCropOption()) {
+//                hiddenViewModeItems.add(ViewModePickerDialogFragment.ViewModePickerItems.ITEM_ID_USERCROP.getValue());
+//            }
+//
+//            if (this.mViewerConfig != null && this.mViewerConfig.getHideViewModeIds() != null) {
+//                int[] var8 = this.mViewerConfig.getHideViewModeIds();
+//                int var9 = var8.length;
+//
+//                for (int var10 = 0; var10 < var9; ++var10) {
+//                    int item = var8[var10];
+//                    hiddenViewModeItems.add(item);
+//                }
+//            }
+//
+//            CustomViewModePickerDialogFragment dialog = CustomViewModePickerDialogFragment.newInstance(currentViewMode, isRtlMode, isReflowMode, reflowTextSize, hiddenViewModeItems);
+//            dialog.setViewModePickerDialogFragmentListener(this);
+//            dialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.AppTheme);
+//            FragmentManager fragmentManager = this.getFragmentManager();
+//            if (fragmentManager != null) {
+//                dialog.show(fragmentManager, "view_mode_picker");
+//            }
+//
+//            this.stopHideToolbarsTimer();
+//        }
+//    }
 
     @Override
     public void onThumbnailClickListener(int page) {

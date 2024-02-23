@@ -63,7 +63,7 @@ import com.pdftron.pdf.utils.PdfViewCtrlSettingsManager;
 import com.pdftron.pdf.utils.Utils;
 import com.pdftron.pdf.utils.ViewerUtils;
 import com.pdftron.reactnative.R;
-import com.pdftron.reactnative.nativeviews.CustomViewerBuilder;
+import com.pdftron.reactnative.nativeviews.CustomViewerBuilder2;
 import com.pdftron.reactnative.nativeviews.RNPdfViewCtrlTabFragment;
 import com.pdftron.reactnative.utils.ReactUtils;
 
@@ -440,7 +440,7 @@ public class DocumentView extends com.pdftron.pdf.controls.DocumentView implemen
                     .build(getContext());
         }
 
-        return CustomViewerBuilder.withUri(mDocumentUri, mPassword)
+        return CustomViewerBuilder2.withUri(mDocumentUri, mPassword)
                 .usingConfig(mViewerConfig)
                 .usingNavIcon(mShowNavIcon ? mNavIconRes : 0)
                 .usingCustomHeaders(mCustomHeaders)
@@ -1056,7 +1056,7 @@ public class DocumentView extends com.pdftron.pdf.controls.DocumentView implemen
     }
 
     @Override
-    public void onOpenDocError() {
+    public boolean onOpenDocError() {
         super.onOpenDocError();
 
         String error = "Unknown error";
@@ -1083,6 +1083,7 @@ public class DocumentView extends com.pdftron.pdf.controls.DocumentView implemen
             error = mPdfViewCtrlTabHostFragment.getString(messageId);
         }
         onReceiveNativeEvent(ON_DOCUMENT_ERROR, error);
+        return  true;
     }
 
     public void importAnnotationCommand(String xfdfCommand, boolean initialLoad) throws PDFNetException {
