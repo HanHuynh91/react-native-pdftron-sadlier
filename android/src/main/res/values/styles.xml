@@ -6,4 +6,13 @@
         <!-- remove some tools from AnnotationToolbar and QuickMenu -->
         <item name="disable_tool_modes">@array/disable_tool_modes</item>
     </style>
+
+    <style name="MyToolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="titleTextColor">@color/colorToolbarIcon</item>
+        <item name="colorControlNormal">@color/colorToolbarIcon</item>
+        <item name="iconTint">@color/colorToolbarIcon</item>
+        <!--Search-->
+        <item name="android:editTextColor">@color/colorToolbarIcon</item>
+        <item name="android:textColorHint">@color/colorToolbarIcon</item>
+    </style>
 </resources>
